@@ -4,5 +4,18 @@ Rails.application.routes.draw do
 
   namespace :api do
     get "/api_test", to:'static#api_test'
+
+    get 'songs', to: 'songs#index'
+    get 'songs/:id', to: 'songs#show'
+
+    get 'users', to: 'users#index'
+    get 'users/:id', to: 'users#show'
+
+    get 'bands', to: 'bands#index'
+    get 'bands/:id', to: 'bands#show'
+
+    resources :users
+    resources :songs
+    resources :bands
   end
 end
