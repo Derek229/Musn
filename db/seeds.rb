@@ -9,7 +9,7 @@
 
 require 'faker'
 
-#user seed file
+# user seed file
 
 10.times do |i|
   user = User.create(
@@ -37,8 +37,14 @@ end
     name: Faker::Music.band,
     genre:Faker::Music.genre,
     members:Faker::Music.instrument, 
-    image:''
+    image:'',
+    user_id:rand(1..10)
   )
+end
+
+10.times do 
+  Favorite.create(user_id: rand(1..10), song_id: rand(1..15))
+  Follow.create(user_id: rand(1..10), band_id: rand(1..5))
 end
 
 

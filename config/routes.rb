@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     get 'bands', to: 'bands#index'
     get 'bands/:id', to: 'bands#show'
 
+    get 'favorites', to: 'favorites#index'
+    get 'follows', to: 'follows#index'
+
     resources :users
     resources :songs
     resources :bands
