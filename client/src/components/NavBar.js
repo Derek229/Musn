@@ -14,7 +14,7 @@ class Navbar1 extends React.Component {
           <Nav.Link href="#">
                 Signed in as: {user.name}
           </Nav.Link>
-          <Nav.Link href="">
+          <Nav.Link onSelect={handleLogout}>
             Logout
           </Nav.Link>
         </>
@@ -62,18 +62,6 @@ class Navbar1 extends React.Component {
     )
   }
 }
-
-// export class ConnectedNavbar extends React.Component {
-//   render() {
-//     return (
-//       <AuthConsumer> 
-//         { auth => 
-//           <Navbar1 { ...this.props } auth={auth} />
-//         }
-//       </AuthConsumer>
-//     )
-//   }
-// }
 
     
 
