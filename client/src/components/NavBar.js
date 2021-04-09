@@ -5,39 +5,33 @@ import { Link, withRouter, } from 'react-router-dom'
 
 class Navbar1 extends React.Component {
   
-  // rightNavItems = () => {
-  //   const { auth: { user, handleLogout, }, location, } = this.props;
+  rightNavItems = () => {
+    const { auth: { user, handleLogout, }, location, } = this.props;
     
-  //   if (user) {
-  //     return (
-  //       <Menu.Menu position='right'>
-  //         <Menu.Item
-  //           name='logout'
-  //           onClick={ () => handleLogout(this.props.history) }
-  //         />
-  //       </Menu.Menu>
-  //     )
-  //   } else {
-  //     return (
-  //       <Menu.Menu position='right'>
-  //         <Link to='/login'>
-  //           <Menu.Item
-  //             id='login'
-  //             name='login'
-  //             active={location.pathname === '/login'}
-  //           />
-  //         </Link>
-  //         <Link to='/register'>
-  //           <Menu.Item
-  //             id='register'
-  //             name='register'
-  //             active={location.pathname === '/register'}
-  //           />
-  //         </Link>
-  //       </Menu.Menu>
-  //     )
-  //   }
-  // }
+    if (user) {
+      return (
+        <>
+          <Nav.Link href="#">
+                Signed in as: {user.name}
+          </Nav.Link>
+          <Nav.Link href="">
+            Logout
+          </Nav.Link>
+        </>
+      )
+    } else {
+      return (
+        <>
+        <Nav.Link href="#">
+          Login
+        </Nav.Link>
+        <Nav.Link href="">
+          Register
+        </Nav.Link>
+        </>
+      )
+    }
+  }
 
   
   
@@ -61,12 +55,7 @@ class Navbar1 extends React.Component {
             </Nav>
           </Navbar.Collapse>
           <Nav className="justify-content-end" style={{ width: "100%" }}>
-            <Nav.Link href="#">
-              Signed in as: User name here
-            </Nav.Link>
-            <Nav.Link href="">
-              Logout
-            </Nav.Link>
+            {this.rightNavItems()}
           </Nav>
           </Navbar>
       </div>
@@ -79,7 +68,7 @@ class Navbar1 extends React.Component {
 //     return (
 //       <AuthConsumer> 
 //         { auth => 
-//           <Navbar { ...this.props } auth={auth} />
+//           <Navbar1 { ...this.props } auth={auth} />
 //         }
 //       </AuthConsumer>
 //     )
