@@ -1,3 +1,4 @@
 class Favorite < ApplicationRecord
-  #has_many :songs, through :user
+  belongs_to :user
+  belongs_to :song
 end

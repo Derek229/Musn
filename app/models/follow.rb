@@ -1,3 +1,4 @@
 class Follow < ApplicationRecord
-  #has_many :bands, through :user
+  belongs_to :user
+  belongs_to :band
 end
