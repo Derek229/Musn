@@ -6,17 +6,17 @@ import { AuthProvider, } from "./providers/AuthProvider";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import {initMiddleware,} from 'devise-axios'
-import {UserProvider} from './providers/UserProvider'
+
 
 initMiddleware();
 
 ReactDOM.render(
   <AuthProvider>
-    <UserProvider>
+
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </UserProvider>
+    
   </AuthProvider>,
   document.getElementById('root')
 );
