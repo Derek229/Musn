@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get 'favorites/:user_id', to: 'favorites#show'
     post 'favorites/:user_id', to: 'favorites#create'
     get 'follows/:user_id', to: 'follows#show'
+    post 'followers/:user_id', to: 'follows#create'
 
     resources :users
     resources :songs

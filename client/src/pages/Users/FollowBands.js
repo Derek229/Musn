@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {Card, ListGroup, ListGroupItem, Button} from 'react-bootstrap'
 import axios from 'axios'
+import FollowBand from '../../components/FollowBand'
 
 const FollowBands = (props) => {
 
@@ -38,6 +39,8 @@ const FollowBands = (props) => {
           <Card.Body>
             <Card.Link href="#"><Button className="btn btn-info">Go to Band's Page</Button></Card.Link>
           </Card.Body>
+
+          <FollowBand bandId={band.band_id}/>
           <Card.Footer>
             <small className="text-muted">Last updated (insert time here)</small>
           </Card.Footer>
