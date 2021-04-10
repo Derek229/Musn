@@ -1,6 +1,6 @@
 class Api::BandsController < ApplicationController
 
-    before_action :get_band, only: [:show]
+    before_action :get_band, only: [:show, :destroy]
 
     def index
         bands = Band.all
@@ -30,7 +30,7 @@ class Api::BandsController < ApplicationController
     end
 
     def destroy
-        @band.delete
+        render json: @band.delete
     end
 
 
