@@ -12,7 +12,7 @@ class Api::SongsController < ApplicationController
     end
 
     def create
-        user = Song.new(user_params)
+        song = Song.new(user_params)
         if song.save
             render json: song
         else
@@ -21,9 +21,9 @@ class Api::SongsController < ApplicationController
     end
 
     def update
-        user = Song.find(params[:id])
+        song = Song.find(params[:id])
         if song.update(song_params)
-            render json: @song
+            render json: song
         else
            render json: { errors: main.errors }, status: :unprocessable_entity
         end
@@ -42,7 +42,7 @@ class Api::SongsController < ApplicationController
     end
 
     def user_params
-        params.require(:song).permit(:name, :artist, :genre, :album)
+        params.require(:song).permit(:name, :artist, :genre, :album, :user_id)
     end
 
 end
