@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 import React, {useContext, useEffect, useState} from 'react'
-import {Card, ListGroup, ListGroupItem, Button, Modal} from 'react-bootstrap'
+import {Card, ListGroup, ListGroupItem, Button, Modal, Container} from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 import AddToFavorites from '../components/AddToFavorites'
 import Thumbnail from '../components/Thumbnail'
