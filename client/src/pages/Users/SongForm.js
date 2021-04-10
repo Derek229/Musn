@@ -4,20 +4,20 @@ import axios from 'axios'
 import {Form} from 'react-bootstrap'
 import {AuthContext} from '../../providers/AuthProvider'
 import {useHistory} from 'react-router-dom'
+import MySongs from './MySongs'
 
 const SongForm = (props) => {
-  const {songProp, handleClose,} = props
+  const {songProp, handleClose, addSong} = props
 
   const history = useHistory()
   const auth = useContext(AuthContext);
-  const [name, setName] = useState('')
-  const [artist, setArtist] = useState('')
   const [songState, setSongState] = useState(
     songProp ? {
       name: songProp.name,
       artist: songProp.artist,
       image: songProp.image,
       genre: songProp.genre,
+      spotify_id: songProp.spotify_id,
 			user_id: auth.user.id,
     }  :
     {
@@ -26,15 +26,17 @@ const SongForm = (props) => {
       artist: '',
       image: '',
       genre: '',
+      spotify_id: '',
       user_id: auth.user.id,
     }
   )
 
   const createSong = async () => {
     try{
-      // let res = await axios.post(`/api/users/${auth.user.id}/songs`, songState)
+      debugger
+      let res = await axios.post(`/api/songs`, songState)
       handleClose()
-      // addSong(res.data)
+      console.log(res.data)
 
     }catch(err){
       alert(err)
@@ -67,48 +69,60 @@ const SongForm = (props) => {
 
 	return (
 		<>
-    {/* <Form onSubmit={handleSubmit}>
-      <Form.Field>
-        <label>Song Name</label>
-				<input 
-          name="name"
-          value={songState.name}
-          onChange={handleChange}
-          placeholder={songProp ? songState.name : 'Name'}
-        />
-      </Form.Field>
-      <Form.Field>
-        <label>Band/Artist</label>
-				<input 
-					name="artist"
-          value={songState.artist}
-					onChange={handleChange}
-					placeholder={songProp ? songState.artist : 'Artist'}
-				/>
-      </Form.Field>
-      <Button type='submit'>Submit</Button> 
-    </Form> */}
 
     <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Control
-            label="Name"
+            label="name"
             autoFocus
             required         
             name='name'
-            value={name}
+            value={songState.name}
             placeholder={songProp ? songState.name : 'Name'}
             onChange={handleChange}
           />
           </Form.Group>
           <Form.Group>
           <Form.Control
-            label="Artist"
+            label="artist"      
+            name='artist'
+            autoFocus
+            required 
+            value={songState.artist}
+            placeholder={songProp ? songState.artist : 'Artist'}
+            onChange={handleChange}
+          /> 
+          </Form.Group>
+          <Form.Group>
+          <Form.Control
+            label="album"
             autoFocus
             required         
-            name='artist'
-            value={artist}
-            placeholder={songProp ? songState.artist : 'Artist'}
+            name='album'
+            value={songState.album}
+            placeholder={songProp ? songState.album : 'Album'}
+            onChange={handleChange}
+          />
+          </Form.Group>
+          <Form.Group>
+          <Form.Control
+            label="genre"      
+            name='genre'
+            autoFocus
+            required 
+            value={songState.genre}
+            placeholder={songProp ? songState.genre : 'Genre'}
+            onChange={handleChange}
+          /> 
+          </Form.Group>
+          <Form.Group>
+          <Form.Control
+            label="spotify_id"      
+            name='spotify_id'
+            autoFocus
+            required 
+            value={songState.spotify_id}
+            placeholder={songProp ? songState.spotify_id : 'Youtube URL ID'}
             onChange={handleChange}
           /> 
           </Form.Group>
