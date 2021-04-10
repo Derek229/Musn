@@ -8,11 +8,7 @@ import SongForm from './SongForm'
 
 const MySong = (props) => {
 
-<<<<<<< HEAD
-  const {title, album, artist, genre, spotify_id, owner } = props
-=======
   const {songId, key, title, album, artist, genre, spotify_id, userId, favoriteId} = props
->>>>>>> badb2e67521dddc7a5a918deb0532df8889ed5aa
 
   const [show, setShow] = useState(false);
 
