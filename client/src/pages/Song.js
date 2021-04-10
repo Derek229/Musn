@@ -1,8 +1,10 @@
 import axios from 'axios';
-import { Button } from 'bootstrap';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+
+import { Link, useParams } from 'react-router-dom';
 import { Card } from 'semantic-ui-react'
+import Thumbnail from '../components/Thumbnail';
 
 
 const Song = ()=>{
@@ -28,7 +30,11 @@ const renderSong = () => {
     
     return(
         <> 
+        <Link to='/songs'>
+        <Button>Go Back</Button>
+        </Link>
         <Card>
+        <Thumbnail url={song.spotify_id} />
            
         <h2>{song.title}</h2>       
         <h3>{song.artist}</h3>
