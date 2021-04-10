@@ -10,6 +10,8 @@ import FetchUser from './components/FetchUser'
 import ProtectedRoute from './components/ProtectedRoute'
 import MyDashboard from './pages/Users/MyDashboard';
 import About from './pages/About';
+import FindUsers from './pages/Users/FindUsers';
+import UserShow from './pages/Users/UserShow';
 
 const App = () => (
   <Fragment>
@@ -22,6 +24,8 @@ const App = () => (
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path='/dashboard' component={MyDashboard} />
+          <ProtectedRoute exact path='/users' component={FindUsers} />
+          <ProtectedRoute exact path='/users/:id' component={UserShow} />
           <Route component={NoMatch} />
         </Switch>
       </Container>

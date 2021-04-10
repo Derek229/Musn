@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const FollowBands = (props) => {
 
-  const {auth} = props
+  const {userId} = props
 
   const [myBands, setMyBands] = useState([])
 
@@ -14,36 +14,43 @@ const FollowBands = (props) => {
 
   const getMyBands = async () => {
     //update w/ path for user's specific songs
-    let res = await axios.get(`/api/follows/${auth.user.id}`)
+    try{
+    let res = await axios.get(`/api/follows/${userId}`)
     setMyBands(res.data)
-    console.log(res.data)
+    console.log(res.data)}
+    catch(error){
+      console.log(error)
+    }
   }
 
   const renderBands = () => {
-    return myBands.map(band =>{
-      return(
-        <>
-          <Card style={{ width: '100%' }} className="mb-2">
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-            <Card.Body>
-              <Card.Title><h4>{band.band_name}</h4></Card.Title>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroupItem>Genre: {band.genre}</ListGroupItem>
-            </ListGroup>
-            <Card.Body>
-              <Card.Link href="#"><Button className="btn btn-info">Go to Band's Page</Button></Card.Link>
-            </Card.Body>
-          </Card>
-        </>
-      )
-    })
-    
+    return myBands.map(band => {
+    return(
+      <>
+        <Card style={{ width: '100%' }}>
+          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+          <Card.Body>
+            <Card.Title><h4>{band.band_name}</h4></Card.Title>
+          </Card.Body>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem>{band.genre}</ListGroupItem>
+          </ListGroup>
+          <Card.Body>
+            <Card.Link href="#"><Button className="btn btn-info">Go to Band's Page</Button></Card.Link>
+          </Card.Body>
+          <Card.Footer>
+            <small className="text-muted">Last updated (insert time here)</small>
+          </Card.Footer>
+        </Card>
+      </>
+    )})
   }
 
   return (
     <>
+      {!myBands.length >= 1 ? <ListGroup>no favorite bands</ListGroup>  : <div>
       {renderBands()}
+      </div> }
     </>
   )
 }

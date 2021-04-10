@@ -4,9 +4,8 @@ import axios from 'axios'
 import MySong from './MySong'
 
 const MySongs = (props) => {
-
-  const {setMySongs, mySongs, auth} = props
-  
+  const [mySongs, setMySongs] = useState([])
+  const {userId} = props
 
   useEffect(()=>{
     getMySongs()
@@ -14,25 +13,21 @@ const MySongs = (props) => {
 
   const getMySongs = async () => {
     //update w/ path for user's specific songs
-    let res = await axios.get(`/api/favorites/${auth.user.id}`)
+    let res = await axios.get(`/api/favorites/${userId}`)
     setMySongs(res.data)
+    console.log(res.data)
   }
   
   const renderSongs = () => {
     //map through songs array
-    return mySongs.map(song => {
-      return(
-        <div key={song.song_id}>
-          <MySong song={song}/>
-        </div>
-      )
-    })
-    
+    return mySongs.map(song => <MySong title={song.title} album={song.album} artist={song.artist} genre={song.genre} spotify_id={song.spotify_id}/>)
   }
 
   return(
     <>
+    {!mySongs.length >= 1 ? 'no favorite songs' : <div>
     {renderSongs()}
+    </div> }
     </>
   )
 }

@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import {Card, ListGroup, ListGroupItem, Button, Modal} from 'react-bootstrap'
+import Thumbnail from '../../components/Thumbnail'
 import SongForm from './SongForm'
 
 const MySong = (props) => {
 
-  const {song}=props
+  const {title, album, artist, genre, spotify_id} = props
 
   const [show, setShow] = useState(false);
 
@@ -12,6 +13,7 @@ const MySong = (props) => {
   const handleShow = () => setShow(true);
 
   const editFormModal = () => {
+    
     return (
       <>
         <Button className="btn btn-info" onClick={handleShow}>
@@ -36,16 +38,17 @@ const MySong = (props) => {
   const renderSong = () => {
     return(
       <>
-        <Card className="mb-2">
-          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+        <Card >
+          <Thumbnail url={spotify_id} />
           <Card.Body>
-            <Card.Title><h4>{song.title}</h4></Card.Title>
+            <Card.Title><h4>{title}</h4></Card.Title>
             <Card.Text>
-              Artist: {song.artist}
+              By: {artist}
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Genre: {song.genre}</ListGroupItem>
+            <ListGroupItem>Album: {album}</ListGroupItem>
+            <ListGroupItem>{genre}</ListGroupItem>
           </ListGroup>
           <Card.Body>
             <Card.Link>{editFormModal()}</Card.Link>
