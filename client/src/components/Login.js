@@ -1,6 +1,5 @@
 import React from 'react';
 import { AuthConsumer, } from "../providers/AuthProvider";
-import { Segment, Header, } from 'semantic-ui-react';
 import {Form, Button} from 'react-bootstrap';
 
 class Login extends React.Component {
@@ -21,9 +20,10 @@ class Login extends React.Component {
     const { email, password, } = this.state;
   
     return (
-      <Segment basic>
-        <Header as='h1' textAlign='center'>Login</Header>
+      <>
+        <h1>Login</h1>
         <Form onSubmit={this.handleSubmit}>
+        <Form.Group>
           <Form.Control
             label="Email"
             autoFocus
@@ -33,6 +33,8 @@ class Login extends React.Component {
             placeholder='Email'
             onChange={this.handleChange}
           />
+          </Form.Group>
+          <Form.Group>
           <Form.Control
             label="Password"
             required
@@ -41,12 +43,11 @@ class Login extends React.Component {
             placeholder='Password'
             type='password'
             onChange={this.handleChange}
-          />
-          <Segment textAlign='center' basic>
+          /> 
+          </Form.Group>
             <Button primary type='submit'>Submit</Button>
-          </Segment>
         </Form>
-      </Segment>
+      </>
     )
   }
 }

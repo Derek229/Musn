@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthConsumer, } from "../providers/AuthProvider";
-import { Button, Form, Segment, Header, } from 'semantic-ui-react';
+import {Form, Button} from 'react-bootstrap';
 
 class Register extends React.Component {
   state = { email: '', password: '', passwordConfirmation: '', };
@@ -23,21 +23,24 @@ class Register extends React.Component {
   
   render() {
     const { email, password, passwordConfirmation, } = this.state;
-    
+
     return (
-      <Segment basic>
-        <Header as='h1' textAlign='center'>Register</Header>
+      <>
+        <h1>Register</h1>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Input
+        <Form.Group>
+          <Form.Control
             label="Email"
-            required
             autoFocus
+            required         
             name='email'
             value={email}
             placeholder='Email'
             onChange={this.handleChange}
           />
-          <Form.Input
+          </Form.Group>
+          <Form.Group>
+          <Form.Control
             label="Password"
             required
             name='password'
@@ -45,22 +48,25 @@ class Register extends React.Component {
             placeholder='Password'
             type='password'
             onChange={this.handleChange}
-          />
-          <Form.Input
-            label="Password Confirmation"
+          /> 
+          </Form.Group>
+          <Form.Group>
+          <Form.Control
+            label="Confirm Password"
             required
             name='passwordConfirmation'
             value={passwordConfirmation}
-            placeholder='Password Confirmation'
+            placeholder='Confirm Password'
             type='password'
             onChange={this.handleChange}
-          />
-          <Segment textAlign='center' basic>
+          /> 
+          </Form.Group>
             <Button primary type='submit'>Submit</Button>
-          </Segment>
         </Form>
-      </Segment>
+      </>
     )
+
+
   }
 }
 
