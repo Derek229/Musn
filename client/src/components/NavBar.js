@@ -1,7 +1,7 @@
 import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
-import { Link, withRouter, } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class Navbar1 extends React.Component {
   
@@ -11,21 +11,23 @@ class Navbar1 extends React.Component {
     if (user) {
       return (
         <>
-          <Nav.Link href="#">
-                Signed in as: {user.name}
+          <Nav.Link href="/dashboard">
+            {user.name}
           </Nav.Link>
-          <Nav.Link onSelect={handleLogout}>
+          <Nav.Link>
+          <Nav.Item onClick={() => handleLogout(this.props.history)}>
             Logout
+          </Nav.Item>
           </Nav.Link>
         </>
       )
     } else {
       return (
         <>
-        <Nav.Link href="#">
+        <Nav.Link href="/login">
           Login
         </Nav.Link>
-        <Nav.Link href="">
+        <Nav.Link href="/register">
           Register
         </Nav.Link>
         </>
@@ -38,25 +40,25 @@ class Navbar1 extends React.Component {
   render() {
     return (
       <div>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">Musn</Navbar.Brand>
+        <Navbar bg="primary" expand="lg" variant="dark">
+          <Navbar.Brand href="/">MUSN</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">About</Nav.Link>
+            <Nav activeKey={this.props.location.pathname} className="mr-auto" >
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/about">About</Nav.Link>
               <NavDropdown title="Access" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Users</NavDropdown.Item>
+                <NavDropdown.Item href="/users">Users</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.2">Songs</NavDropdown.Item>
+                <NavDropdown.Item href="/songs">Songs</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.3">Bands</NavDropdown.Item>
+                <NavDropdown.Item href="/bands">Bands</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-          </Navbar.Collapse>
-          <Nav className="justify-content-end" style={{ width: "100%" }}>
+          <Nav activeKey={this.props.location.pathname} className="justify-content-end" style={{ width: "100%" }}>
             {this.rightNavItems()}
           </Nav>
+          </Navbar.Collapse>
           </Navbar>
       </div>
     )
