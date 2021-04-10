@@ -28,7 +28,7 @@ const renderSong = () => {
     
     return(
         <> 
-        <Card>
+        <Card >
            
         <h2>{song.title}</h2>       
         <h3>{song.artist}</h3>

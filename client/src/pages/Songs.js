@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 import React, {useContext, useEffect, useState} from 'react'
-import {Card, ListGroup, ListGroupItem, Button, Modal} from 'react-bootstrap'
+import {Card, ListGroup, ListGroupItem, Button, Modal, Container} from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import AddToFavorites from '../components/AddToFavorites'
 import Thumbnail from '../components/Thumbnail'
@@ -61,7 +61,8 @@ const Songs = (props)=>{
         return songs.map((song) => {
         return(
             <>
-        <Card >
+            <Container className="d-flex justify-content-center mt-5 mb-5 ">
+        <Card style={{width:"400px", }} >
           <Thumbnail url={song.spotify_id} />
           <Card.Body>
             <Card.Title><h4>{song.title}</h4></Card.Title>
@@ -79,6 +80,7 @@ const Songs = (props)=>{
             <Card.Link><Button className="btn btn-warning">Delete Song</Button></Card.Link>
           </Card.Body>
         </Card>
+        </Container>
       </>
         )}
    
