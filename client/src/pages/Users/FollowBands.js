@@ -33,7 +33,6 @@ const FollowBands = (props) => {
     return(
       <>
         <Card style={{ width: '100%' }}>
-          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
           <Card.Body>
             <Card.Title><h4>{band.band_name}</h4></Card.Title>
           </Card.Body>

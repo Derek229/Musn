@@ -22,22 +22,17 @@ const FavoriteSongs = () => {
     return(
       <>
         <Card className="mb-2">
-          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
           <Card.Body>
-            <Card.Title><h4>Song Title</h4></Card.Title>
+            <Card.Title><h4>Here we would</h4></Card.Title>
             <Card.Text>
-              Artist
+              render 
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Album</ListGroupItem>
-            <ListGroupItem>Genre</ListGroupItem>
-            <ListGroupItem>Uploaded By: </ListGroupItem>
+            <ListGroupItem>random songs</ListGroupItem>
+            <ListGroupItem>for you!</ListGroupItem>
+            <ListGroupItem>Uploaded By: Sons of Pitches Dev Team</ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#"><Button className="btn btn-info">Open Song</Button></Card.Link>
-            <Card.Link href="#"><Button className="btn btn-success">Visit User</Button></Card.Link>
-          </Card.Body>
         </Card>
       </>
     )

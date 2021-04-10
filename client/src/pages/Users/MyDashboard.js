@@ -38,7 +38,6 @@ const MyDashboard = () => {
     return(
       <>
         <Card style={{ width: '100%' }}>
-          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
           <Card.Body>
             <Card.Title><h3>Name: {user.name}</h3></Card.Title>
             <Card.Text>
@@ -83,7 +82,7 @@ const MyDashboard = () => {
       <Row>
         <Col xs={{ order: 1 }}><h3>My Songs</h3></Col>
         <Col xs={{ order: 2 }}><h3>My Favorite Bands</h3></Col>
-        <Col xs={{ order: 2 }}><h3>Favorite Songs</h3></Col>
+        <Col xs={{ order: 2 }}><h3>Random Songs</h3></Col>
         </Row>
         <Row>
         <Col xs={{ order: 1 }}><MySongs setMySongs={setMySongs} mySongs={mySongs} userId={auth.user.id}/></Col>
