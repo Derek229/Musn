@@ -5,7 +5,7 @@ import MySong from './MySong'
 
 const MySongs = (props) => {
   const [mySongs, setMySongs] = useState([])
-  const {userId} = props
+  const {userId, owner} = props
 
   useEffect(()=>{
     getMySongs()
@@ -20,7 +20,7 @@ const MySongs = (props) => {
   
   const renderSongs = () => {
     //map through songs array
-    return mySongs.map(song => <MySong key={song.song_id} title={song.title} album={song.album} artist={song.artist} genre={song.genre} spotify_id={song.spotify_id}/>)
+    return mySongs.map(song => <MySong key={song.song_id} title={song.title} album={song.album} artist={song.artist} genre={song.genre} spotify_id={song.spotify_id} owner={owner}/>)
   }
 
   return(

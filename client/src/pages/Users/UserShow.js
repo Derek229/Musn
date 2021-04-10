@@ -13,6 +13,7 @@ const UserShow = () => {
     const [user, setUser] = useState(null)
     const [favorites, setFavorites] = useState(null)
     const [following, setFollowing] = useState(null)
+    const [owner, setOwner] = useState(false)
 
     useEffect(()=> {
         getData()
@@ -64,10 +65,10 @@ const UserShow = () => {
               
               {user &&
               <div>
-                  <Link to='/users'>
-                <Button>Back to Users</Button>
-                </Link>
               <Container fluid >
+              <Link to='/users'>
+                <Button className="mb-2 mt-3 btn-warning">Back to Users</Button>
+              </Link>
               <h1>{user.name}'s Dashboard</h1>
                 <div >
                   
@@ -85,7 +86,7 @@ const UserShow = () => {
                 <Col xs={{ order: 2 }}><h3>{user.name}'s Favorite Bands</h3></Col>
                 </Row>
                 <Row>
-                <Col xs={{ order: 1 }}><MySongs userId={id} /></Col>
+                <Col xs={{ order: 1 }}><MySongs userId={id} owner={owner}/></Col>
                 <Col xs={{ order: 2 }}><FollowBands userId={id} /></Col>
 
                 </Row>

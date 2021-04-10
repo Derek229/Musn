@@ -5,7 +5,7 @@ import SongForm from './SongForm'
 
 const MySong = (props) => {
 
-  const {title, album, artist, genre, spotify_id} = props
+  const {title, album, artist, genre, spotify_id, owner } = props
 
   const [show, setShow] = useState(false);
 
@@ -48,12 +48,14 @@ const MySong = (props) => {
           </Card.Body>
           <ListGroup className="list-group-flush">
             <ListGroupItem>Album: {album}</ListGroupItem>
-            <ListGroupItem>{genre}</ListGroupItem>
-          </ListGroup>
-          <Card.Body>
-            <Card.Link>{editFormModal()}</Card.Link>
-            <Card.Link><Button className="btn btn-warning">Delete Song</Button></Card.Link>
-          </Card.Body>
+            <ListGroupItem>Genre: {genre}</ListGroupItem>
+          </ListGroup> 
+          {owner!==false &&
+            <Card.Body >
+              <Card.Link>{editFormModal()}</Card.Link>
+              <Card.Link><Button className="btn btn-danger">Delete Song</Button></Card.Link>
+            </Card.Body>
+          }
         </Card>
       </>
     )

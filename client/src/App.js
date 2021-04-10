@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import { Switch, Route, } from 'react-router-dom';
 import { Container, } from "react-bootstrap";
+import Footer from './components/Footer'
 import FetchUser from './components/FetchUser'
 import ProtectedRoute from './components/ProtectedRoute'
 import MyDashboard from './pages/Users/MyDashboard';
@@ -30,6 +31,7 @@ const App = () => (
         </Switch>
       </Container>
     </FetchUser>
+    <Footer />
   </Fragment>
 )
 
