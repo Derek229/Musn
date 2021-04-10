@@ -37,7 +37,7 @@ class Api::SongsController < ApplicationController
     private
 
 
-    def get_
+    def get_song
         @song = Song.find(params[:id])
     end
 
