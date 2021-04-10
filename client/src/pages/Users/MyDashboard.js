@@ -86,8 +86,8 @@ const MyDashboard = () => {
         <Col xs={{ order: 2 }}><h3>Favorite Songs</h3></Col>
         </Row>
         <Row>
-        <Col xs={{ order: 1 }}><MySongs setMySongs={setMySongs} mySongs={mySongs} auth={auth}/></Col>
-        <Col xs={{ order: 2 }}><FollowBands auth={auth}/></Col>
+        <Col xs={{ order: 1 }}><MySongs setMySongs={setMySongs} mySongs={mySongs} userId={auth.user.id}/></Col>
+        <Col xs={{ order: 2 }}><FollowBands userId={auth.user.id}/></Col>
         <Col xs={{ order: 2 }}><FavoriteSongs /></Col>
         </Row>
       </Container>

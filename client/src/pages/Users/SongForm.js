@@ -69,27 +69,6 @@ const SongForm = (props) => {
 
 	return (
 		<>
-    {/* <Form onSubmit={handleSubmit}>
-      <Form.Field>
-        <label>Song Name</label>
-				<input 
-          name="name"
-          value={songState.name}
-          onChange={handleChange}
-          placeholder={songProp ? songState.name : 'Name'}
-        />
-      </Form.Field>
-      <Form.Field>
-        <label>Band/Artist</label>
-				<input 
-					name="artist"
-          value={songState.artist}
-					onChange={handleChange}
-					placeholder={songProp ? songState.artist : 'Artist'}
-				/>
-      </Form.Field>
-      <Button type='submit'>Submit</Button> 
-    </Form> */}
 
     <Form onSubmit={handleSubmit}>
         <Form.Group>

@@ -54,9 +54,6 @@ const MySong = (props) => {
             <Card.Link>{editFormModal()}</Card.Link>
             <Card.Link><Button className="btn btn-warning">Delete Song</Button></Card.Link>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated by: {song.name}</small>
-          </Card.Footer>
         </Card>
       </>
     )
