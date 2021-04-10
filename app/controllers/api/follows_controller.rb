@@ -5,6 +5,11 @@ class Api::FollowsController < ApplicationController
         render json: Follow.follow_index(user_id)
     end
 
+    def destroy
+        follow = Follow.find(params[:follow_id])
+        follow.delete
+    end
+
     def create
         follow = Follow.new(follow_params)
         if follow.save

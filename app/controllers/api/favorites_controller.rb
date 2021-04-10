@@ -5,6 +5,11 @@ class Api::FavoritesController < ApplicationController
         render json: Favorite.favorite_table(user_id)
     end
 
+    def destroy
+        favorite = Favorite.find(params[:favorite_id])
+        favorite.delete
+    end
+
     def create
         favorite = Favorite.new(favorite_params)
         if favorite.save
