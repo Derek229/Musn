@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import {Card, ListGroup, ListGroupItem, Container, Row, Col, Button} from 'react-bootstrap'
 import MySongs from './MySongs'
 import FollowBands from './FollowBands'
@@ -24,12 +24,12 @@ const UserShow = () => {
             let res = await axios.get(`/api/users/${id}`)
             console.log(res.data)
             setUser(res.data)
-            let tes = await axios.get(`/api/favorites/${id}`)
-            console.log(tes.data)
-            setFavorites(tes.data)
-            let mes = await axios.get(`/api/follows/${id}`)
-            console.log(mes.data)
-            setFollowing(mes.data)
+            // let tes = await axios.get(`/api/favorites/${id}`)
+            // console.log(tes.data)
+            // setFavorites(tes.data)
+            // let mes = await axios.get(`/api/follows/${id}`)
+            // console.log(mes.data)
+            // setFollowing(mes.data)
         } catch (error) {
             console.log(error)
         }
@@ -64,6 +64,9 @@ const UserShow = () => {
               
               {user &&
               <div>
+                  <Link to='/users'>
+                <Button>Back to Users</Button>
+                </Link>
               <Container fluid >
               <h1>{user.name}'s Dashboard</h1>
                 <div >
@@ -82,8 +85,8 @@ const UserShow = () => {
                 <Col xs={{ order: 2 }}><h3>{user.name}'s Favorite Bands</h3></Col>
                 </Row>
                 <Row>
-                <Col xs={{ order: 1 }}>{<MySongs userId={id} />}</Col>
-                <Col xs={{ order: 2 }}><FollowBands /></Col>
+                <Col xs={{ order: 1 }}><MySongs userId={id} /></Col>
+                <Col xs={{ order: 2 }}><FollowBands userId={id} /></Col>
 
                 </Row>
               </Container> 
