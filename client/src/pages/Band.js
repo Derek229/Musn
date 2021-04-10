@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Card, ListGroup, ListGroupItem, Button, Modal} from 'react-bootstrap'
-// import BandForm from './bandForm'
+import { Link } from 'react-router-dom';
+import BandForm from './Users/BandForm'
 
 const Band = (props) => {
   const [show, setShow] = useState(false);
@@ -20,7 +21,7 @@ const Band = (props) => {
           <Modal.Header closeButton>
             <Modal.Title>Edit this band</Modal.Title>
           </Modal.Header>
-          <Modal.Body><bandForm handleClose={handleClose}/></Modal.Body>
+          <Modal.Body><BandForm handleClose={handleClose} bandProp={band}/></Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
@@ -34,6 +35,7 @@ const Band = (props) => {
   const renderBand = () => {
     return(
       <>
+     
         <Card >
           <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
           <Card.Body>

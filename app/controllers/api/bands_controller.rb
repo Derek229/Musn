@@ -12,7 +12,7 @@ class Api::BandsController < ApplicationController
     end
 
     def create
-        user = Band.new(band_params)
+        band = Band.new(band_params)
         if band.save
             render json: band
         else
@@ -23,7 +23,7 @@ class Api::BandsController < ApplicationController
     def update
         band = Band.find(params[:id])
         if band.update(band_params)
-            render json: @band
+            render json: band
         else
            render json: { errors: main.errors }, status: :unprocessable_entity
         end
@@ -43,7 +43,7 @@ class Api::BandsController < ApplicationController
     end
 
     def band_params
-        params.require(:band).permit(:name, :genre, :avatar, :members)
+        params.require(:band).permit(:name, :genre, :avatar, :members, :user_id)
     end
 
 end
