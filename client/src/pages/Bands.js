@@ -1,39 +1,45 @@
+import React, {useState, useEffect, useContext} from 'react'
+import {Card, ListGroup, ListGroupItem, Button} from 'react-bootstrap'
 import axios from 'axios'
-import React, { useState } from 'react'
+import Band from './Band'
 
-const bands = (props)=> {
-  const [show, setShow] =  useState(null)
-   const[name, setName] = useState('')
-   
-   const {data, loading, error} =useAxiosOnMount('/api/bands')
-   const handleSubmit =async () => {
-     try{
-       let res = await axios.post('/api/bands', {name})
-       window.location.reload()
-     } catch (err){
-       console.log(err)
-     }
-     }
+const Bands = () => {
+  const [bands, setBands] = useState([])
+  const [band, setBand] = useState(null)
+  
+  useEffect(()=>{
+    getBands()
+  },[])
 
-     const deleteBand = async (id) => {
-       try {
-         let res = await axios.delete(`/api/bands/${id}`)
-         window.location.reload()
-       }catch(err) {
-         console.log(err)
-       }
-       }
-          return(
-            <Form.Group>
-  <Form.Control size="lg" type="text" placeholder="Large text" />
-  <br />
-  <Form.Control type="text" placeholder="Normal text" />
-  <br />
-  <Form.Control size="sm" type="text" placeholder="Small text" />
-</Form.Group>
-          )
+  const getBands = async () => {
+    
+    try{let res = await axios.get(`/api/bands`)
+    setBands(res.data)
+    console.log(res.data)
+    debugger
+  }
+  catch (err){alert('get bands error')}
 
-     }
+  }
+  const renderBands = () => {
+    return bands.map( band => <Band key={band.id} band={band} setBands={setBands} bands={bands}/>)
+  }
+  
+  const addBand = (band) => {
+    setBands([band,...bands])
+  }
+    
+  const addFormModal = (addOrEdit, band) => {
+
+  }
+    return(
+      <div>
+        {renderBands()}
+      </div>
+    )
+  }
+
  
 
-export default bands
+
+export default Bands
