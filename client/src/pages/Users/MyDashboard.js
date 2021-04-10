@@ -1,16 +1,20 @@
 import React, {useState, useEffect, useContext} from 'react'
-import {Card, ListGroup, ListGroupItem, Container, Row, Col, Button} from 'react-bootstrap'
+import {Card, ListGroup, ListGroupItem, Container, Row, Col, Button, Modal} from 'react-bootstrap'
 import axios from 'axios'
 import {AuthContext} from '../../providers/AuthProvider'
 import MySongs from './MySongs'
 import FollowBands from './FollowBands'
 import FavoriteSongs from './FavoriteSongs'
+import SongForm from './SongForm'
 
 const MyDashboard = () => {
 
   const auth = useContext(AuthContext)
 
   const [user, setUser] = useState([])
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(()=>{
     getUserData()
@@ -28,9 +32,30 @@ const MyDashboard = () => {
 
   }
 
+  const addSongModal = () => {
+    return (
+      <>
+        <Button className="btn btn-success" onClick={handleShow}>
+          Add New Song
+        </Button>
+  
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add a Song</Modal.Title>
+          </Modal.Header>
+          <Modal.Body><SongForm handleClose={handleClose}/></Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
+
 
   const renderSelf = () => {
-
     return(
       <>
         <Card style={{ width: '100%' }}>
@@ -46,7 +71,8 @@ const MyDashboard = () => {
             <ListGroupItem>Date Joined: {user.created_at}</ListGroupItem>
           </ListGroup>
           <Card.Body>
-            <Card.Link href="#"><Button className="btn btn-info">Edit Self</Button></Card.Link>
+            <Card.Link><Button className="btn btn-info">Edit User Details</Button></Card.Link>
+            <Card.Link>{addSongModal()}</Card.Link>
           </Card.Body>
         </Card>
       </>
