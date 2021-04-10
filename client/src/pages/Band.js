@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useState} from 'react'
 import {Card, ListGroup, ListGroupItem, Button, Modal} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
@@ -9,6 +10,15 @@ const Band = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const {band, bandId, setBands, bands} =  props
+
+  const deleteBand = async(id) => {
+    try {
+      await axios.delete(`/api/bands/${id}`)
+      window.location.reload()
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const editFormModal = () => {
     return (
@@ -47,7 +57,7 @@ const Band = (props) => {
           </ListGroup>
           <Card.Body>
             <Card.Link>{editFormModal()}</Card.Link>
-            <Card.Link><Button className="btn btn-warning">Delete band</Button></Card.Link>
+            <Card.Link><Button className="btn btn-warning" onClick={()=>deleteBand(band.id)}>Delete band</Button></Card.Link>
           </Card.Body>
           <Card.Footer>
             <small className="text-muted">Last updated (insert time here)</small>
