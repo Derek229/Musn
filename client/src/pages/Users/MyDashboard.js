@@ -4,15 +4,16 @@ import axios from 'axios'
 import {AuthContext} from '../../providers/AuthProvider'
 import MySongs from './MySongs'
 import FollowBands from './FollowBands'
-import FavoriteSongs from './FavoriteSongs'
-import SongForm from './SongForm'
 import EditUser from './EditUser'
+import AddNewSong from './AddNewSong'
+import FavoriteSongs from './FavoriteSongs'
 
 const MyDashboard = () => {
 
   const auth = useContext(AuthContext)
 
   const [user, setUser] = useState([])
+  const [mySongs, setMySongs] = useState([])
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -25,37 +26,12 @@ const MyDashboard = () => {
   const getUserData = async () => {
     let res = await axios.get(`/api/users/${auth.user.id}`)
     setUser(res.data)
-    console.log(res.data)
   }
 
-  //Get user's associated songs through favorites
-  const getSongs = async () => {
-
+  //pass to form when adding new song
+  const addSong = (song) => {
+    setMySongs([song,...mySongs])
   }
-
-  const addSongModal = () => {
-    return (
-      <>
-        <Button className="btn btn-success" onClick={handleShow}>
-          Add New Song
-        </Button>
-  
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add a Song</Modal.Title>
-          </Modal.Header>
-          <Modal.Body><SongForm handleClose={handleClose}/></Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    );
-  }
-
-
 
 
   const renderSelf = () => {
@@ -74,8 +50,10 @@ const MyDashboard = () => {
             <ListGroupItem>Date Joined: {user.created_at}</ListGroupItem>
           </ListGroup>
           <Card.Body>
+            <div style={{display: 'flex', height: '100%'}}>
             <EditUser user={user} setUser={setUser}/>
-            <Card.Link>{addSongModal()}</Card.Link>
+            <AddNewSong addSong={addSong}/>
+            </div>
           </Card.Body>
         </Card>
       </>
@@ -101,15 +79,15 @@ const MyDashboard = () => {
       </div>
       </Container>
       <br />
-      <Container fluid class="d-flex justify-content-center">
+      <Container fluid >
       <Row>
         <Col xs={{ order: 1 }}><h3>My Songs</h3></Col>
         <Col xs={{ order: 2 }}><h3>My Favorite Bands</h3></Col>
-        <Col xs={{ order: 2 }}><h3>My Favorite Songs</h3></Col>
+        <Col xs={{ order: 2 }}><h3>Favorite Songs</h3></Col>
         </Row>
         <Row>
-        <Col xs={{ order: 1 }}><MySongs /></Col>
-        <Col xs={{ order: 2 }}><FollowBands /></Col>
+        <Col xs={{ order: 1 }}><MySongs setMySongs={setMySongs} mySongs={mySongs} auth={auth}/></Col>
+        <Col xs={{ order: 2 }}><FollowBands auth={auth}/></Col>
         <Col xs={{ order: 2 }}><FavoriteSongs /></Col>
         </Row>
       </Container>

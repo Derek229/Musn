@@ -1,27 +1,26 @@
 import React, {useState} from 'react'
+import SongForm from './SongForm'
 import {Button, Modal} from 'react-bootstrap'
-import EditUserForm from './EditUserForm'
 
-const EditUser = (props) => {
-  const {user, setUser} = props
+const AddNewSong = (props) => {
+  const {addSong} = props
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
-    const editUserModal = () => {
+  const addSongModal = () => {
     return (
       <>
-        <Button className="btn btn-info mb-1" onClick={handleShow}>
-          Edit User
+        <Button className="btn btn-success ml-3" onClick={handleShow}>
+          Add New Song
         </Button>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit {user.name}</Modal.Title>
+            <Modal.Title>Add a Song</Modal.Title>
           </Modal.Header>
-          <Modal.Body><EditUserForm user={user} handleClose={handleClose} setUser={setUser}/></Modal.Body>
+          <Modal.Body><SongForm handleClose={handleClose} addSong={addSong}/></Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
@@ -32,11 +31,11 @@ const EditUser = (props) => {
     );
   }
 
-  return(
+  return (
     <div>
-      {editUserModal()}
+      {addSongModal()}
     </div>
   )
 }
 
-export default EditUser
+export default AddNewSong

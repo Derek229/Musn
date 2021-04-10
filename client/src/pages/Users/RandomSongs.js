@@ -2,14 +2,14 @@ import React, {useState, useEffect, useContext} from 'react'
 import {Card, ListGroup, ListGroupItem, Button} from 'react-bootstrap'
 import axios from 'axios'
 
-const FavoriteSongs = () => {
-  const [myFavoriteSongs, setMyFavoriteSongs] = useState([])
+const RandomSongs = () => {
+  const [radomSongs, setRandomSongs] = useState([])
 
   // useEffect(()=>{
   //   getMyFavorites()
   // },[])
 
-  const getMyFavorites = async () => {
+  const getRandomSong = async () => {
     //update w/ path for user's favorite songs
     // let res = await axios.get(`/api/users/${auth.user.id}`)
     // setMyFavoriteSongs(res.data)
@@ -17,11 +17,11 @@ const FavoriteSongs = () => {
   }
 
   //render user's favorited songs
-  const renderFavoriteSongs = () => {
+  const renderRandomSongs = () => {
     //map through songs array
     return(
       <>
-        <Card className="mb-2">
+        <Card >
           <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
           <Card.Body>
             <Card.Title><h4>Song Title</h4></Card.Title>
@@ -45,9 +45,9 @@ const FavoriteSongs = () => {
 
   return (
     <>
-      {renderFavoriteSongs()}
+      {renderRandomSongs()}
     </>
   )
 }
 
-export default FavoriteSongs
+export default RandomSongs

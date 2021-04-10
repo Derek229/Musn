@@ -2,7 +2,10 @@ import React, {useState} from 'react'
 import {Card, ListGroup, ListGroupItem, Button, Modal} from 'react-bootstrap'
 import SongForm from './SongForm'
 
-const MySong = () => {
+const MySong = (props) => {
+
+  const {song}=props
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -33,24 +36,23 @@ const MySong = () => {
   const renderSong = () => {
     return(
       <>
-        <Card >
+        <Card className="mb-2">
           <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
           <Card.Body>
-            <Card.Title><h4>Song Title</h4></Card.Title>
+            <Card.Title><h4>{song.title}</h4></Card.Title>
             <Card.Text>
-              Artist
+              Artist: {song.artist}
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Album</ListGroupItem>
-            <ListGroupItem>Genre</ListGroupItem>
+            <ListGroupItem>Genre: {song.genre}</ListGroupItem>
           </ListGroup>
           <Card.Body>
             <Card.Link>{editFormModal()}</Card.Link>
             <Card.Link><Button className="btn btn-warning">Delete Song</Button></Card.Link>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">Last updated (insert time here)</small>
+            <small className="text-muted">Last updated by: {song.name}</small>
           </Card.Footer>
         </Card>
       </>
