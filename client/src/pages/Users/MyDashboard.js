@@ -74,7 +74,7 @@ const MyDashboard = () => {
             <ListGroupItem>Date Joined: {user.created_at}</ListGroupItem>
           </ListGroup>
           <Card.Body>
-            <EditUser user={user}/>
+            <EditUser user={user} setUser={setUser}/>
             <Card.Link>{addSongModal()}</Card.Link>
           </Card.Body>
         </Card>

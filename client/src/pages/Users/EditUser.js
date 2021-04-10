@@ -3,7 +3,7 @@ import {Card, ListGroup, ListGroupItem, Button, Modal} from 'react-bootstrap'
 import EditUserForm from './EditUserForm'
 
 const EditUser = (props) => {
-  const {user} = props
+  const {user, setUser} = props
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -21,7 +21,7 @@ const EditUser = (props) => {
           <Modal.Header closeButton>
             <Modal.Title>Edit {user.name}</Modal.Title>
           </Modal.Header>
-          <Modal.Body><EditUserForm user={user} /></Modal.Body>
+          <Modal.Body><EditUserForm user={user} handleClose={handleClose} setUser={setUser}/></Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close

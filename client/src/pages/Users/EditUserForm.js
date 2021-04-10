@@ -4,7 +4,7 @@ import {Form, Button} from 'react-bootstrap'
 import {AuthContext} from '../../providers/AuthProvider'
 
 const SongForm = (props) => {
-  const {user, handleClose,} = props
+  const {user, handleClose, setUser} = props
 
   const auth = useContext(AuthContext);
   const [userState, setUserState] = useState(
@@ -23,8 +23,9 @@ const SongForm = (props) => {
 
   const editUser = async () => {
     try{
-      // axios.put(`/api/users/${auth.user.id}`, userState)
+      axios.put(`/api/users/${auth.user.id}`, userState)
       handleClose()
+      setUser(userState)
     }catch(err){
       alert(err)
     }
@@ -60,7 +61,7 @@ const SongForm = (props) => {
             label="Email"
             autoFocus
             required         
-            name='Email'
+            name='email'
             value={userState.email}
             placeholder={user ? user.email : 'Email'}
             onChange={handleChange}
