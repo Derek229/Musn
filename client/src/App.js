@@ -10,6 +10,7 @@ import FetchUser from './components/FetchUser'
 import ProtectedRoute from './components/ProtectedRoute'
 import MyDashboard from './pages/Users/MyDashboard';
 import About from './pages/About';
+import Band from './pages/Band';
 
 const App = () => (
   <Fragment>
@@ -22,6 +23,7 @@ const App = () => (
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path='/dashboard' component={MyDashboard} />
+          <Route exact path='/bands' component={Band}/>
           <Route component={NoMatch} />
         </Switch>
       </Container>
