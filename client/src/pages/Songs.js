@@ -1,14 +1,21 @@
 
-import {Link, useParams} from 'react-router-dom'
 import axios from 'axios'
-import { useEffect, useState } from 'react';
-import { Card } from 'semantic-ui-react';
+import React, {useContext, useEffect, useState} from 'react'
+import {Card, ListGroup, ListGroupItem, Button, Modal} from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
+import AddToFavorites from '../components/AddToFavorites'
+import Thumbnail from '../components/Thumbnail'
+import SongForm from './Users/SongForm'
 
 
 
 const Songs = (props)=>{
     const { id } = useParams()
     const [songs, setSongs] = useState(null);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
     useEffect(() => {
@@ -27,20 +34,52 @@ const Songs = (props)=>{
         }
     }
 
+    const editFormModal = () => {
+    
+        return (
+          <>
+            <Button className="btn btn-info" onClick={handleShow}>
+              Edit
+            </Button>
+      
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Edit this Song</Modal.Title>
+              </Modal.Header>
+              <Modal.Body><SongForm handleClose={handleClose}/></Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </>
+        );
+      }
+
     const renderSong = () => {
         return songs.map((song) => {
         return(
-            <> 
-            <Card>
-               <Link to={`songs/${song.id}`}>
-            <h2>{song.title}</h2>
-                 </Link>
-            <h3>{song.artist}</h3>
-            <h4>{song.album}</h4>
-            <h4>{song.genre}</h4>
-           <br/>
-           </Card>
-            </>
+            <>
+        <Card >
+          <Thumbnail url={song.spotify_id} />
+          <Card.Body>
+            <Card.Title><h4>{song.title}</h4></Card.Title>
+            <Card.Text>
+              By: {song.artist}
+            </Card.Text>
+          </Card.Body>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem>Album: {song.album}</ListGroupItem>
+            <ListGroupItem>{song.genre}</ListGroupItem>
+          </ListGroup>
+          <AddToFavorites songId={song.id}/>
+          <Card.Body>
+            <Card.Link>{editFormModal()}</Card.Link>
+            <Card.Link><Button className="btn btn-warning">Delete Song</Button></Card.Link>
+          </Card.Body>
+        </Card>
+      </>
         )}
    
         )
