@@ -15,7 +15,7 @@ require 'faker'
   user = User.create(
     name: Faker::Name.name,
     email: "user#{i+1}@test.com",
-    image: '', 
+    image: Faker::Avatar.image, 
     password: '123456'
   )
 

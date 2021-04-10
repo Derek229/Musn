@@ -9,6 +9,6 @@ class Follow < ApplicationRecord
     .from('follows')
     .joins('inner join users u on u.id = follows.user_id inner join bands b on b.id = follows.band_id')
     .order('u.id')
-    .where("u.id = #{user_id}")
+    .where("u.id =  ?", "#{user_id}")
   end
 end
