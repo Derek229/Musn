@@ -6,6 +6,7 @@ import MySongs from './MySongs'
 import FollowBands from './FollowBands'
 import FavoriteSongs from './FavoriteSongs'
 import SongForm from './SongForm'
+import EditUser from './EditUser'
 
 const MyDashboard = () => {
 
@@ -55,6 +56,8 @@ const MyDashboard = () => {
   }
 
 
+
+
   const renderSelf = () => {
     return(
       <>
@@ -71,7 +74,7 @@ const MyDashboard = () => {
             <ListGroupItem>Date Joined: {user.created_at}</ListGroupItem>
           </ListGroup>
           <Card.Body>
-            <Card.Link><Button className="btn btn-info">Edit User Details</Button></Card.Link>
+            <EditUser user={user}/>
             <Card.Link>{addSongModal()}</Card.Link>
           </Card.Body>
         </Card>
