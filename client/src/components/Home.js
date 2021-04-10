@@ -1,5 +1,6 @@
 import Header from '../components/Header'
-import {Container, Row, Button, Col} from 'react-bootstrap'
+import {Container, Row, Button, Col, Card} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 const Home = () => {
   // page content
@@ -14,19 +15,19 @@ const Home = () => {
       <Container className="d-flex justify-content-center mt-5 mb-5 ">
         <Row className="d-flex justify-content-center w-100">
           <Col className="d-flex justify-content-center">
-            <Button variant="primary" className="btn btn-info" size="lg">
+            <Button href="/dashboard" variant="primary" className="btn btn-info" size="lg">
               Dashboard
             </Button>
           </Col>
           
           <Col className="d-flex justify-content-center">
-            <Button variant="primary" className="btn btn-warning" size="lg">
+            <Button href="/songs" variant="primary" className="btn btn-warning" size="lg">
               All Songs
             </Button>
           </Col>
 
           <Col className="d-flex justify-content-center">
-            <Button variant="primary" className="btn btn-success"  size="lg">
+            <Button href="/users" variant="primary" className="btn btn-success"  size="lg">
               All Users
             </Button>
           </Col>
