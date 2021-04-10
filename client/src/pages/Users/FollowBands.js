@@ -1,10 +1,15 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {Card, ListGroup, ListGroupItem, Button} from 'react-bootstrap'
 import axios from 'axios'
+import FollowBand from '../../components/FollowBand'
+import { AuthContext, AuthProvider } from '../../providers/AuthProvider'
+import UnfollowBand from '../../components/UnfollowBand'
 
 const FollowBands = (props) => {
 
   const {userId} = props
+
+  const auth = useContext(AuthContext)
 
   const [myBands, setMyBands] = useState([])
 
@@ -38,6 +43,8 @@ const FollowBands = (props) => {
           <Card.Body>
             <Card.Link href="#"><Button className="btn btn-info">Go to Band's Page</Button></Card.Link>
           </Card.Body>
+
+          {auth.user.id != band.user_id ? <FollowBand bandId={band.band_id}/> : <UnfollowBand followId={band.follow_id}/>}
           <Card.Footer>
             <small className="text-muted">Last updated (insert time here)</small>
           </Card.Footer>

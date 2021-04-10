@@ -1,13 +1,18 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Card, ListGroup, ListGroupItem, Button, Modal} from 'react-bootstrap'
+import AddToFavorites from '../../components/AddToFavorites'
 import Thumbnail from '../../components/Thumbnail'
+import UnfavoriteSong from '../../components/UnfavoriteSong'
+import { AuthContext } from '../../providers/AuthProvider'
 import SongForm from './SongForm'
 
 const MySong = (props) => {
 
-  const {title, album, artist, genre, spotify_id} = props
+  const {songId, key, title, album, artist, genre, spotify_id, userId, favoriteId} = props
 
   const [show, setShow] = useState(false);
+
+  const auth = useContext(AuthContext)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -50,6 +55,7 @@ const MySong = (props) => {
             <ListGroupItem>Album: {album}</ListGroupItem>
             <ListGroupItem>{genre}</ListGroupItem>
           </ListGroup>
+          {auth.user.id != userId ? <AddToFavorites songId={songId}/> : <UnfavoriteSong favorite_id={favoriteId}/> }
           <Card.Body>
             <Card.Link>{editFormModal()}</Card.Link>
             <Card.Link><Button className="btn btn-warning">Delete Song</Button></Card.Link>

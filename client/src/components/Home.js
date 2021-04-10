@@ -1,8 +1,41 @@
-import React from 'react';
-import { Header, } from 'semantic-ui-react';
+import Header from '../components/Header'
+import {Container, Row, Button, Col} from 'react-bootstrap'
 
-const Home = () => (
-  <Header as="h3" textAlign="center">Devise Auth App</Header>
-)
+const Home = () => {
+  // page content
+  const pageTitle = 'Home'
+  const pageDescription = 'welcome to MUSN'
 
-export default Home;
+  return (
+    <>
+      <div>
+        <Header head={pageTitle} description={pageDescription} />
+      </div>
+      <Container className="d-flex justify-content-center mt-5 mb-5 ">
+        <Row className="d-flex justify-content-center w-100">
+          <Col className="d-flex justify-content-center">
+            <Button variant="primary" className="btn btn-info" size="lg">
+              Dashboard
+            </Button>
+          </Col>
+          
+          <Col className="d-flex justify-content-center">
+            <Button variant="primary" className="btn btn-warning" size="lg">
+              All Songs
+            </Button>
+          </Col>
+
+          <Col className="d-flex justify-content-center">
+            <Button variant="primary" className="btn btn-success"  size="lg">
+              All Users
+            </Button>
+          </Col>
+        
+        </Row>
+    
+      </Container>
+    </>
+  )
+}
+
+export default Home

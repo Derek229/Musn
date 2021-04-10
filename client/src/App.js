@@ -6,19 +6,17 @@ import Login from './components/Login';
 import Register from './components/Register';
 import { Switch, Route, } from 'react-router-dom';
 import { Container, } from "react-bootstrap";
+import Footer from './components/Footer'
 import FetchUser from './components/FetchUser'
 import ProtectedRoute from './components/ProtectedRoute'
-<<<<<<< HEAD
 import Songs from './pages/Songs';
 import Song from './pages/Song';
 import SearchBar from './components/SearchBar';
-=======
 import MyDashboard from './pages/Users/MyDashboard';
 import About from './pages/About';
 import Bands from './pages/Bands';
 import FindUsers from './pages/Users/FindUsers';
 import UserShow from './pages/Users/UserShow';
->>>>>>> e37702a83fb824cdbe7e630470e7403062a0f415
 
 const App = () => (
   <Fragment>
@@ -40,6 +38,7 @@ const App = () => (
         </Switch>
       </Container>
     </FetchUser>
+    <Footer />
   </Fragment>
 )
 
