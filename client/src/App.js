@@ -14,6 +14,7 @@ import Song from './pages/Song';
 import SearchBar from './components/SearchBar';
 import MyDashboard from './pages/Users/MyDashboard';
 import About from './pages/About';
+import Bands from './pages/Bands';
 import FindUsers from './pages/Users/FindUsers';
 import UserShow from './pages/Users/UserShow';
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route exact path="/songs/:id" component={Song} />
           <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path='/dashboard' component={MyDashboard} />
+          <Route exact path='/bands' component={Bands}/>
           <ProtectedRoute exact path='/users' component={FindUsers} />
           <ProtectedRoute exact path='/users/:id' component={UserShow} />
           <Route component={NoMatch} />
