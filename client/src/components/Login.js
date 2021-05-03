@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthConsumer, } from "../providers/AuthProvider";
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, Container} from 'react-bootstrap';
 
 class Login extends React.Component {
   state = { email: '', password: '' }
@@ -20,7 +20,7 @@ class Login extends React.Component {
     const { email, password, } = this.state;
   
     return (
-      <>
+      <Container>
         <h1>Login</h1>
         <Form onSubmit={this.handleSubmit}>
         <Form.Group>
@@ -47,7 +47,7 @@ class Login extends React.Component {
           </Form.Group>
             <Button primary type='submit'>Submit</Button>
         </Form>
-      </>
+      </Container>
     )
   }
 }
