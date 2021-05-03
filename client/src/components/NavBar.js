@@ -31,15 +31,11 @@ class Navbar1 extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav activeKey={this.props.location.pathname} className="mr-auto" >
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/about">About</Nav.Link>
-              <NavDropdown title="Access" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/users">Users</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/songs">Songs</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/bands">Bands</NavDropdown.Item>
-              </NavDropdown>
+                
+                <Nav.Link href="/songs">Songs</Nav.Link>
+                <Nav.Link href="/users">Users</Nav.Link>
+                <Nav.Link href="/bands">Bands</Nav.Link>
+                <Nav.Link href="/about">About</Nav.Link>
             </Nav>
           <Nav activeKey={this.props.location.pathname} className="justify-content-end" style={{ width: "100%" }}>
             {this.rightNavItems()}

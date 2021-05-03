@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 
 const Home = () => {
   // page content
-  const pageTitle = 'Home'
-  const pageDescription = 'welcome to MUSN'
+  const pageTitle = 'Welcome to MUSN'
+  const pageDescription = ' community-driven social media for music lovers'
 
   return (
     <>
@@ -16,19 +16,19 @@ const Home = () => {
         <Row className="d-flex justify-content-center w-100">
           
           <Col className="d-flex justify-content-center">
-            <Button href="/songs" variant="primary" className="btn btn-warning" size="lg">
+            <Button href="/songs" className="btn btn-success" size="lg">
               All Songs
             </Button>
           </Col>
 
           <Col className="d-flex justify-content-center">
-            <Button href="/users" variant="primary" className="btn btn-success"  size="lg">
+            <Button href="/users" className="btn btn-info"  size="lg">
               All Users
             </Button>
           </Col>
 
           <Col className="d-flex justify-content-center">
-            <Button href="/bands" variant="primary" className="btn btn-info" size="lg">
+            <Button href="/bands" className="btn btn-warning" size="lg">
               All Bands
             </Button>
           </Col>
