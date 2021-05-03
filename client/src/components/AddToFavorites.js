@@ -14,7 +14,7 @@ const AddToFavorites = (props) => {
             try {
                 console.log(songId)
                 let res = axios.post(`/api/favorites/${auth.user.id}`, {song_id: songId, user_id: user_id})
-                console.log(res.data)
+                window.location.reload()
             } catch (error) {
                 console.log(error)
             }

@@ -5,16 +5,19 @@ import {Card, ListGroup, ListGroupItem, Button, Modal, Container} from 'react-bo
 import { Link, useParams } from 'react-router-dom'
 import AddToFavorites from '../components/AddToFavorites'
 import Thumbnail from '../components/Thumbnail'
+import UnfavoriteSong from '../components/UnfavoriteSong'
+import { AuthContext } from '../providers/AuthProvider'
 import SongForm from './Users/SongForm'
 
 
 
 const Songs = (props)=>{
-    const { id } = useParams()
-    const [songs, setSongs] = useState(null);
-    const [show, setShow] = useState(false);
+  const {user} = useContext(AuthContext)
+  const [songs, setSongs] = useState(null);
+  const [show, setShow] = useState(false);
+  const [usersSongIds, setUsersSongIds] = useState([])
 
-    const handleClose = () => setShow(false);
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
 
@@ -26,9 +29,11 @@ const Songs = (props)=>{
       const getSongs = async()=>{
         try{
           let res = await axios.get(`/api/songs`)
+          let res2 = await axios.get(`/api/favorites/${user.id}`)
           setSongs(res.data)
-
-          console.log(res.data)
+          setUsersSongIds(([...new Set(res2.data.map(us => us.song_id))]))
+          // console.log(res.data)
+          // console.log(([...new Set(res2.data.map(us => us.song_id))]))
         }catch(err){
             alert('err')
         }
@@ -76,7 +81,7 @@ const Songs = (props)=>{
             <ListGroupItem>Album: {song.album}</ListGroupItem>
             <ListGroupItem>{song.genre}</ListGroupItem>
           </ListGroup>
-          <AddToFavorites songId={song.id}/>
+          {!usersSongIds.includes(song.id) ? <AddToFavorites songId={song.id}/> : <UnfavoriteSong songId={song.id}/>}
           <Card.Body>
             <Card.Link>{editFormModal()}</Card.Link>
             <Card.Link><Button className="btn btn-warning">Delete Song</Button></Card.Link>
