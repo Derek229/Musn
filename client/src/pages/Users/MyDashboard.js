@@ -67,10 +67,15 @@ const MyDashboard = () => {
     <div>
       
       <Container fluid >
-      <h1>Dashboard</h1>
+      <h1>My Dashboard</h1>
         <div >
           
         </div>
+      <div>
+        <Row>
+          <Col>{renderSelf()}</Col>
+        </Row>
+      </div>
       </Container>
       <br />
       <Container fluid >

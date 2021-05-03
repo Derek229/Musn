@@ -13,8 +13,8 @@ const EditUser = (props) => {
     const editUserModal = () => {
     return (
       <>
-        <Button variant="warning" className="btn btn-info mb-1" onClick={handleShow}>
-          Edit Profile
+        <Button className="btn btn-info mb-1" onClick={handleShow}>
+          Edit User
         </Button>
   
         <Modal show={show} onHide={handleClose}>
