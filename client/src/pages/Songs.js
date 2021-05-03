@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect, useRef, useState} from 'react'
 import {Card, ListGroup, ListGroupItem, Button, Modal, Container} from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 import AddToFavorites from '../components/AddToFavorites'
@@ -8,6 +8,9 @@ import Thumbnail from '../components/Thumbnail'
 import UnfavoriteSong from '../components/UnfavoriteSong'
 import { AuthContext } from '../providers/AuthProvider'
 import SongForm from './Users/SongForm'
+// import * as Scroll from 'react-scroll'
+import HorizontalScroll from 'react-scroll-horizontal'
+
 
 
 
@@ -19,6 +22,17 @@ const Songs = (props)=>{
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // const scroll = (scrollOffset) => {
+  //   ref.current.scrollLeft += scrollOffset;
+  // };
+  // const ref = useRef()
+
+  // const scroll = (scrollOffset) => {
+  //   ref.current.scrollLeft += scrollOffset;
+  // }
+
+  // let scroll = Scroll.animateScroll
 
 
     useEffect(() => {
@@ -66,7 +80,7 @@ const Songs = (props)=>{
         return songs.map((song) => {
         return(
             <>
-            <Container className="d-flex justify-content-center mt-5 mb-5 ">
+            <Container className="d-flex justify-content-center mt-5 mb-5" style={{width: '300px', height: '500px', margin: '3em .25em'}}>
         <Card style={{width:"400px", }} >
           <Thumbnail url={song.spotify_id} />
           <Card.Body>
@@ -96,10 +110,17 @@ const Songs = (props)=>{
     }
 
     return (
+      // <HorizontalScroll>
         <>
+          <div>
         <h1>Songs</h1>
+          
+        <div style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'row'}}>
              {songs && renderSong()}
+        </div>
+          </div>
           </>
+      //</HorizontalScroll> 
      )
 }
 
