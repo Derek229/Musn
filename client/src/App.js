@@ -17,16 +17,14 @@ import About from './pages/About';
 import Bands from './pages/Bands';
 import FindUsers from './pages/Users/FindUsers';
 import UserShow from './pages/Users/UserShow';
-import Sidebar from './components/Sidebar';
 
 const App = () => (
   <Fragment>
     <NavBar />
-    <Sidebar />
     <FetchUser>
-      <Container style={{margin: '80px 10vw 0 auto', width: '67vw'}}>
+      <Container>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/about" component={About} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/songs" component={Songs} />
@@ -40,6 +38,7 @@ const App = () => (
         </Switch>
       </Container>
     </FetchUser>
+    <Footer />
   </Fragment>
 )
 
