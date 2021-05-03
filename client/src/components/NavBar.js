@@ -30,11 +30,13 @@ class Navbar1 extends React.Component {
           <Navbar.Brand href="/">MUSN</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav activeKey={this.props.location.pathname} className="mr-auto" >
-                
+            
+            <Nav activeKey={this.props.location.pathname} className="mr-auto" >   
+            {this.props.auth.user && 
+            <>          
                 <Nav.Link href="/songs">Songs</Nav.Link>
                 <Nav.Link href="/users">Users</Nav.Link>
-                <Nav.Link href="/bands">Bands</Nav.Link>
+                <Nav.Link href="/bands">Bands</Nav.Link></>}
                 <Nav.Link href="/about">About</Nav.Link>
             </Nav>
           <Nav activeKey={this.props.location.pathname} className="justify-content-end" style={{ width: "100%" }}>
