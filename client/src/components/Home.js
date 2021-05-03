@@ -14,11 +14,6 @@ const Home = () => {
       </div>
       <Container className="d-flex justify-content-center mt-5 mb-5 ">
         <Row className="d-flex justify-content-center w-100">
-          <Col className="d-flex justify-content-center">
-            <Button href="/dashboard" variant="primary" className="btn btn-info" size="lg">
-              Dashboard
-            </Button>
-          </Col>
           
           <Col className="d-flex justify-content-center">
             <Button href="/songs" variant="primary" className="btn btn-warning" size="lg">
@@ -29,6 +24,12 @@ const Home = () => {
           <Col className="d-flex justify-content-center">
             <Button href="/users" variant="primary" className="btn btn-success"  size="lg">
               All Users
+            </Button>
+          </Col>
+
+          <Col className="d-flex justify-content-center">
+            <Button href="/bands" variant="primary" className="btn btn-info" size="lg">
+              All Bands
             </Button>
           </Col>
         

@@ -71,11 +71,6 @@ const MyDashboard = () => {
         <div >
           
         </div>
-      <div>
-        <Row>
-          <Col>{renderSelf()}</Col>
-        </Row>
-      </div>
       </Container>
       <br />
       <Container fluid >

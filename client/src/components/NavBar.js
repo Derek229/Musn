@@ -11,9 +11,6 @@ class Navbar1 extends React.Component {
     if (user) {
       return (
         <>
-          <Nav.Link href="/dashboard">
-            {user.name}
-          </Nav.Link>
           <Nav.Link>
           <Nav.Item onClick={() => handleLogout(this.props.history)}>
             Logout
@@ -21,18 +18,7 @@ class Navbar1 extends React.Component {
           </Nav.Link>
         </>
       )
-    } else {
-      return (
-        <>
-        <Nav.Link href="/login">
-          Login
-        </Nav.Link>
-        <Nav.Link href="/register">
-          Register
-        </Nav.Link>
-        </>
-      )
-    }
+    } 
   }
 
   
@@ -40,7 +26,7 @@ class Navbar1 extends React.Component {
   render() {
     return (
       <div>
-        <Navbar bg="primary" expand="lg" variant="dark">
+        <Navbar fixed="top" bg="primary" expand="lg" variant="dark">
           <Navbar.Brand href="/">MUSN</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
