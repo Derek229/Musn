@@ -24,7 +24,7 @@ const App = () => (
     <NavBar />
     <Sidebar />
     <FetchUser>
-      <Container style={{margin: '80px auto 0 250px', width: '67vw'}}>
+      <Container style={{margin: '80px 10vw 0 auto', width: '67vw'}}>
         <Switch>
           <Route exact path="/" component={Home} />
           <ProtectedRoute exact path="/about" component={About} />

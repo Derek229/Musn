@@ -31,6 +31,7 @@ class SideNav extends React.Component {
         }else {
         return (
           <>
+          <p style={{margin: '20px 20px 0px 20px'}}>Start sharing your favorite music with the MUSN Community today.</p>
           <Button href="/login" variant="primary" className="btn btn-info" style={{margin: '30px 0 0 20px'}}>
                     Login
                 </Button>
