@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import pfp from '../../components/Images/IMG_0101.JPG'
 
 const FindUsers = () => {
 
@@ -25,16 +26,19 @@ const FindUsers = () => {
     const renderUsers = () => {
         return users.map(user => {
             return(
-                <Card className="list-group-flush">
-                {/* <img src={user.image} alt='avatar' class="img-thumbnail" /> */}
+                <div style={{width: '400px', height: '150px', backgroundColor: '#303030', margin: '2em 1em'}}>
+                    <div style={{display: 'flex'}}>
+                <img src={pfp} alt='avatar' style={{borderRadius: '50%', height: '64px', width: '64px', objectFit: 'cover', display: 'block', overflow: 'hidden', position: 'relative'}} />
+               <p style={{margin: '30px'}}> {user.email}</p>
+                    </div>
                 {/* <Card.Img variant="top" src={`${user.image}/100px160`} /> */}
-            <ListGroupItem>
+            
                 <Link to={`/users/${user.id}`}>
-                <h4>{user.name}</h4>
+                <h4 style={{textAlign: 'center'}}>{user.name}</h4>
                 </Link>
-                {user.email}
-                </ListGroupItem>
-                </Card>
+                
+               
+                </div>
 
           
                 
@@ -47,7 +51,7 @@ const FindUsers = () => {
         <div>
             <h1>Find Users</h1>
 
-          {users &&  <div >
+          {users &&  <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
                  {renderUsers()} 
                 </div>  }  
             
