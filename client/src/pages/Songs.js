@@ -80,7 +80,7 @@ const Songs = (props)=>{
         return songs.map((song) => {
         return(
             
-            <Container className="d-flex justify-content-center mt-5 mb-5" style={{width: '350px', height: '100%', margin: '3em .25em'}}>
+            <Container className="d-flex justify-content-center mt-5 mb-5" style={{width: '300px', height: '100%', margin: '0'}}>
         <Card style={{width:"400px", }} >
           <Thumbnail url={song.spotify_id} />
           <Card.Body>
@@ -113,8 +113,7 @@ const Songs = (props)=>{
       // 
         <>
           <div>
-        <h1>Songs</h1>
-        <button>LEFT</button>
+        <h1 style={{margin: 'auto'}}>Songs</h1>
           
         <div style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'row', width: '60em', height: '100%', flexWrap: 'wrap'}}>
             {/* <HorizontalScroll pageLock='true'> */}
