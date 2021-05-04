@@ -67,7 +67,7 @@ const MyDashboard = () => {
     <div>
       
       <Container fluid >
-      <h1>My Dashboard</h1>
+      <h1>Dashboard</h1>
         <div >
           
         </div>

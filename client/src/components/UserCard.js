@@ -47,7 +47,10 @@ const UserShow = (props) => {
                   </Card.Body>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem>{auth.user.email}</ListGroupItem>
-                    <Button href="/dashboard" variant="primary" className="btn btn-info" style={{margin: '20px auto 0px 20px'}}>
+                    <Button href="/" variant="success" style={{margin: '20px auto 0px 20px'}}>
+                    Home
+                </Button>
+                    <Button href="/dashboard" variant="info" style={{margin: '20px auto 0px 20px'}}>
                     Dashboard
                 </Button>
                     <div style={{margin: '20px 0 5px 20px'}}>
