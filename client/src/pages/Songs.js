@@ -8,7 +8,7 @@ import Thumbnail from '../components/Thumbnail'
 import UnfavoriteSong from '../components/UnfavoriteSong'
 import { AuthContext } from '../providers/AuthProvider'
 import SongForm from './Users/SongForm'
-// import * as Scroll from 'react-scroll'
+import * as Scroll from 'react-scroll'
 import HorizontalScroll from 'react-scroll-horizontal'
 
 
@@ -29,7 +29,7 @@ const Songs = (props)=>{
   // const ref = useRef()
 
   // const scroll = (scrollOffset) => {
-  //   ref.current.scrollLeft += scrollOffset;
+  //     Scroll.animateScroll.scrollMore(-30);
   // }
 
   // let scroll = Scroll.animateScroll
@@ -79,8 +79,8 @@ const Songs = (props)=>{
     const renderSong = () => {
         return songs.map((song) => {
         return(
-            <>
-            <Container className="d-flex justify-content-center mt-5 mb-5" style={{width: '300px', height: '500px', margin: '3em .25em'}}>
+            
+            <Container className="d-flex justify-content-center mt-5 mb-5" style={{width: '350px', height: '100%', margin: '3em .25em'}}>
         <Card style={{width:"400px", }} >
           <Thumbnail url={song.spotify_id} />
           <Card.Body>
@@ -102,7 +102,7 @@ const Songs = (props)=>{
           </Card.Body>
         </Card>
         </Container>
-      </>
+     
         )}
    
         )
@@ -110,17 +110,20 @@ const Songs = (props)=>{
     }
 
     return (
-      // <HorizontalScroll>
+      // 
         <>
           <div>
         <h1>Songs</h1>
+        <button>LEFT</button>
           
-        <div style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'row'}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'row', width: '60em', height: '100%', flexWrap: 'wrap'}}>
+            {/* <HorizontalScroll pageLock='true'> */}
              {songs && renderSong()}
+             {/* </HorizontalScroll>  */}
         </div>
           </div>
           </>
-      //</HorizontalScroll> 
+      //
      )
 }
 
